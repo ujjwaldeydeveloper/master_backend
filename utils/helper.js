@@ -20,3 +20,15 @@ export const bytesToMb = (bytes) => {
 export const generateRandomNumber = () => {
     return uuidv4();
 }
+
+// * Upload image
+export const uploadImage = (image) => {
+    const imgExt = image?.name.split(".");
+    const imageName = generateRandomNumber() + "." + imgExt[imgExt.length - 1];
+    const uploadPath = process.cwd() + "/public/images/" + imageName;
+    image.mv(uploadPath, (err) => {
+      if (err) throw err;
+    });
+  
+    return imageName;
+};

@@ -65,7 +65,7 @@ class ProfileCntroller {
             mime: profile?.mimetype,
         });
        } catch (error) {
-           console.log(error);
+           console.log("The errror in cathc\h block" + error);
            return res.status(500).json({status: 500, message: "Internal server error"});
        }
     }
