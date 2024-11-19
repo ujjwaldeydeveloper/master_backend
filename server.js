@@ -1,6 +1,11 @@
 import express from "express";
 import "dotenv/config";
 import fileUpload from "express-fileupload";
+// userd to give access to resources from other domains
+import cors from "cors";
+// used to secure the application by setting various HTTP headers
+import helmet from "helmet";
+import {limiter} from "./config/ratelimiter.js";
 
 const app = express();
 
@@ -12,7 +17,12 @@ const PORT = process.env.PORT || 8000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(fileUpload());
+app.use(cors(
+  // origin:"https://news.com",
+));
 
+app.use(helmet());
+app.use(limiter);
 // to allow resources available to outside World in public folder 
 app.use(express.static("public"));
 

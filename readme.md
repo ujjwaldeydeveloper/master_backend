@@ -19,3 +19,6 @@
 7. npx prisma migrate dev --name user_table
 
 8.
+
+
+// till 2:48:10
