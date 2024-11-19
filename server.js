@@ -13,6 +13,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(fileUpload());
 
+// to allow resources available to outside World in public folder 
+app.use(express.static("public"));
+
 app.get("/", (req, res) => {
   return res.json({ message: "Hello World" });
 });
